@@ -1,0 +1,4 @@
+{
+    "rest": "https://api.narkasa.com/v3/api",
+    "ws": "wss://api.narkasa.com/v3"
+}
