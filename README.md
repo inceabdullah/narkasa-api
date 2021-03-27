@@ -29,7 +29,7 @@ Narkasa.setCredential(apiKey, apiSecret);
     - Market
         - [Get All Markets 24h](#get-all-markets-24h)
     - Signed Market
-        - [New Limit Buy Order](#Buy-limit-order)
+        - [New Limit Buy Order](#buy-limit-order)
         - [New Limit Sell Order](#sell-limit-order)
 
 
