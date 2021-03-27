@@ -9,8 +9,8 @@ jobs:
         run: |
          echo "Creating .env file..."
          touch .env
-         echo apiKey=${{ secrets.apiSecret }} >> .env
-         echo apiSecret=${{ secrets.apiSecret }} >> .env
+         echo API_KEY=${{ secrets.API_KEY }} >> .env
+         echo API_SECRET=${{ secrets.API_SECRET }} >> .env
          echo "env file is created."
       - uses: actions/setup-node@v1
         with:

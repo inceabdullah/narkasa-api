@@ -1,6 +1,6 @@
 const { utils } = require("../src/helpers/");
 require("dotenv").config({path: utils.pathJoin(__dirname + "/../.env")});
-const { apiKey, apiSecret } = process.env;
+const { API_KEY: apiKey, API_SECRET: apiSecret } = process.env;
 const expect = require("chai").expect;
 const services = require("../src/services");
 const Narkasa = require("../src/");
