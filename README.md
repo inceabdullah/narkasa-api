@@ -21,8 +21,8 @@ Narkasa.setCredential(apiKey, apiSecret);
     - [Get Balance (wallets)](#get-balance)
 - Websockets
     - [Start Websocket](#start-websocket-client)
-    - User Data Stream
-        - [Start Websocket](#start-websocket-client)
+    - User Data Streams
+        - [Start User Data Streams](#start-user-data-streams)
     - Websocket Data Streams
         - [Start Order Book (Websocket)](#start-order-book)
 - Markets
