@@ -1,5 +1,6 @@
 ## Narkasa API for node.js (npm)
 Narkasa API is an asynchronous node.js library for the Narkasa API designed to be easy to use.
+For more information, please visit [Narkasa Exchange API Documents](https://apidocs.narkasa.com/)
 
 ### Install
 `npm i narkasa-api`
@@ -13,6 +14,20 @@ const apiSecret = "";
 Narkasa.setCredential(apiKey, apiSecret);
 ```
 
+### Table of Contents
+- [Installation](#install)
+- [Set Credential](#set-credential)
+- Signed Balance
+    - [Get Balance (wallets)](#get-balance)
+- Market
+    - [Get All Markets 24h](#get-all-markets-24h)
+- User Data Stream
+    - [Start Websocket](#start-websocket-client)
+- Websocket Data Streams
+    - [Start Order Book (Websocket)](#start-order-book)
+- Signed Market
+    - [New Limit Buy Order](#Buy-limit-order)
+    - [New Limit Sell Order](#sell-limit-order)
 
 ### Get Balance
 ```Javascript
@@ -455,7 +470,9 @@ ask: 1673.59
 ```
 
 ### Buy Limit Order
-`Narkasa.limitBuyOrder("ETHUSDT", 1500, 0.01).then(res=>console.log({res}));`
+```Javascript
+Narkasa.limitBuyOrder("ETHUSDT", 1500, 0.01).then(res=>console.log({res}));
+```
 <details><summary>expected result</summary>
 <p>
 
