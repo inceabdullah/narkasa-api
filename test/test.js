@@ -65,7 +65,7 @@ describe("Narkasa", ()=>{
     });
     describe("making buy limit", ()=>{
         it("making buy limit. Gets order object", async ()=>{
-            const resp = await services.tradeService.limitBuyOrder("ETHUSDT", 1500, 0.01)
+            const resp = await services.tradeService.limitBuyOrder("ETHUSDT", 1500.1, 0.01)
             expect(resp).to.be.an("object");
         });
     });
