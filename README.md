@@ -7,7 +7,7 @@ For more information, please visit [Narkasa Exchange API Documents](https://apid
 
 ### Set Credential
 ```Javascript
-const Narksa = require("narkasa-api");
+const Narkasa = require("narkasa-api");
 const apiKey = "";
 const apiSecret = "";
 
