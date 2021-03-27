@@ -31,7 +31,7 @@ module.exports = {
         return startWS();
     },
 
-    startUserDataStream: async function(){
+    userDataStream: async function(){
         return userDataStream();
     },
 
