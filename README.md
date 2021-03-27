@@ -15,12 +15,13 @@ Narkasa.setCredential(apiKey, apiSecret);
 
 
 ### Get Balance
-`Narkasa.getBalance().then(balance=>console.log({balance}));`
+```Javascript
+Narkasa.getBalance().then(balance=>console.log({balance}));
+```
 <details><summary>expected result</summary>
 <p>
 
 ```Javascript
-//expected
 {
   balance: [
     {
@@ -94,12 +95,13 @@ Narkasa.setCredential(apiKey, apiSecret);
 </details>
 
 ### Get All Markets 24h
-`Narkasa.getAllMarkets().then(res=>console.log({res}));`
+```Javascript
+Narkasa.getAllMarkets().then(res=>console.log({res}));
+```
 <details><summary>expected result</summary>
 <p>
 
 ```Javascript
-//expected
 {
   res: [
     {
@@ -405,7 +407,6 @@ Narkasa.pushOnMessage((message)=>{
 <p>
 
 ```Javascript
-//expected
 {
   message: {
     type: 'orderUpdate',
@@ -459,7 +460,6 @@ ask: 1673.59
 <p>
 
 ```Javascript
-//expected
 {
   res: {
     status: 'NEW',
@@ -479,12 +479,13 @@ ask: 1673.59
 </details>
 
 ### Sell Limit Order
-`Narkasa.sellBuyOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));`
+```Javascript
+Narkasa.sellBuyOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));
+```
 <details><summary>expected result</summary>
 <p>
 
 ```Javascript
-//expected
 {
   res: {
     status: 'NEW',
