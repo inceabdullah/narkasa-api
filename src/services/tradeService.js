@@ -82,7 +82,6 @@ exports.getAllMarkets = () =>
         axios.get(rest+ "/market/markets")
             .then(res=>{
                 if (res.data.code !== "00000" || !res.data.markets) return reject(res.data);
-                console.log({res: res.data.markets});
                 resolve(res.data.markets);
             })
             .catch(reject));
