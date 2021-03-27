@@ -19,15 +19,19 @@ Narkasa.setCredential(apiKey, apiSecret);
 - [Set Credential](#set-credential)
 - Signed Balance
     - [Get Balance (wallets)](#get-balance)
-- Market
-    - [Get All Markets 24h](#get-all-markets-24h)
-- User Data Stream
+- Websockets
     - [Start Websocket](#start-websocket-client)
-- Websocket Data Streams
-    - [Start Order Book (Websocket)](#start-order-book)
-- Signed Market
-    - [New Limit Buy Order](#Buy-limit-order)
-    - [New Limit Sell Order](#sell-limit-order)
+    - User Data Stream
+        - [Start Websocket](#start-websocket-client)
+    - Websocket Data Streams
+        - [Start Order Book (Websocket)](#start-order-book)
+- Markets
+    - Market
+        - [Get All Markets 24h](#get-all-markets-24h)
+    - Signed Market
+        - [New Limit Buy Order](#Buy-limit-order)
+        - [New Limit Sell Order](#sell-limit-order)
+
 
 ### Get Balance
 ```Javascript
@@ -413,10 +417,15 @@ Narkasa.getAllMarkets().then(res=>console.log({res}));
 
 ### Start Websocket Client
 ```Javascript
+await Narkasa.startWS();
+```
+
+### Start User Data Streams
+```Javascript
 await Narkasa.userDataStream();
 Narkasa.pushOnMessage((message)=>{
-        console.log({message}));
-    }
+        console.log({message});
+    });
 ```
 <details><summary>expected result</summary>
 <p>
