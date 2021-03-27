@@ -16,6 +16,9 @@ Narkasa.setCredential(apiKey, apiSecret);
 
 ### Get Balance
 `Narkasa.getBalance().then(balance=>console.log({balance}));`
+<details><summary>expected result</summary>
+<p>
+
 ```Javascript
 //expected
 {
@@ -87,78 +90,8 @@ Narkasa.setCredential(apiKey, apiSecret);
 }
 ```
 
-### Start Websocket Client
-```Javascript
-await Narkasa.userDataStream();
-Narkasa.pushOnMessage((message)=>{
-        console.log({message}));
-    }
-```
-
-```Javascript
-//expected
-{
-  message: {
-    type: 'orderUpdate',
-    order: {
-      orderId: '*******',
-      status: 'CANCELLED',
-      market: 'ETHUSDT',
-      orderType: 0,
-      side: 0,
-      price: 1500,
-      amount: 0.01,
-      filledAmount: 0,
-      stopPrice: 0,
-      time: 1616789285342
-    }
-  }
-}
-{
-  message: { type: 'reservedUpdate', symbol: 'USDT', reserved: 33.24 }
-}
-{
-  message: { type: 'balanceUpdate', symbol: 'USDT', available: 22.22 }
-}
-```
-
-### Start Order Book
-```Javascript
-Narkasa.orderBook();//default symbol: "BTCUSDT"
-//or
-Narkasa.orderBook("ETHUSDT");
-
-//load onMessage Function for order book
-Narkasa.pushOnMessageOrderBook((message)=>{
-        const { symbol, bidPrice: bid, askPrice: ask  } = message
-        console.log(`for ${symbol}\nbid: ${bid}\nask: ${ask}`);
-    });
-```
-```Javascript
-//expected console.log
-for ETHUSDT
-bid: 1668.52
-ask: 1673.59
-```
-
-### Buy Limit Order
-`Narkasa.limitBuyOrder("ETHUSDT", 1500, 0.01).then(res=>console.log({res}));`
-```Javascript
-//expected
-{
-  res: {
-    status: 'NEW',
-    orderId: '****',
-    market: 'ETHUSDT',
-    orderType: 'LIMIT',
-    side: 'BUY',
-    price: 1500,
-    amount: 0.01,
-    filledAmount: 0,
-    time: 1616790209584
-  }
-}
-```
+</p>
+</details>
 
 ### Get All Markets 24h
 `Narkasa.getAllMarkets().then(res=>console.log({res}));`
@@ -460,5 +393,115 @@ ask: 1673.59
 
 </p>
 </details>
+
+### Start Websocket Client
+```Javascript
+await Narkasa.userDataStream();
+Narkasa.pushOnMessage((message)=>{
+        console.log({message}));
+    }
+```
+<details><summary>expected result</summary>
+<p>
+
+```Javascript
+//expected
+{
+  message: {
+    type: 'orderUpdate',
+    order: {
+      orderId: '*******',
+      status: 'CANCELLED',
+      market: 'ETHUSDT',
+      orderType: 0,
+      side: 0,
+      price: 1500,
+      amount: 0.01,
+      filledAmount: 0,
+      stopPrice: 0,
+      time: 1616789285342
+    }
+  }
+}
+{
+  message: { type: 'reservedUpdate', symbol: 'USDT', reserved: 33.24 }
+}
+{
+  message: { type: 'balanceUpdate', symbol: 'USDT', available: 22.22 }
+}
+```
+
+</p>
+</details>
+
+### Start Order Book
+```Javascript
+Narkasa.orderBook();//default symbol: "BTCUSDT"
+//or
+Narkasa.orderBook("ETHUSDT");
+
+//load onMessage Function for order book
+Narkasa.pushOnMessageOrderBook((message)=>{
+        const { symbol, bidPrice: bid, askPrice: ask  } = message
+        console.log(`for ${symbol}\nbid: ${bid}\nask: ${ask}`);
+    });
+```
+```Javascript
+//expected console.log
+for ETHUSDT
+bid: 1668.52
+ask: 1673.59
+```
+
+### Buy Limit Order
+`Narkasa.limitBuyOrder("ETHUSDT", 1500, 0.01).then(res=>console.log({res}));`
+<details><summary>expected result</summary>
+<p>
+
+```Javascript
+//expected
+{
+  res: {
+    status: 'NEW',
+    orderId: '****',
+    market: 'ETHUSDT',
+    orderType: 'LIMIT',
+    side: 'BUY',
+    price: 1500,
+    amount: 0.01,
+    filledAmount: 0,
+    time: 1616790209584
+  }
+}
+```
+
+</p>
+</details>
+
+### Sell Limit Order
+`Narkasa.sellBuyOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));`
+<details><summary>expected result</summary>
+<p>
+
+```Javascript
+//expected
+{
+  res: {
+    status: 'NEW',
+    orderId: '****',
+    market: 'ETHUSDT',
+    orderType: 'LIMIT',
+    side: 'SELL',
+    price: 2000,
+    amount: 0.01,
+    filledAmount: 0,
+    time: 1616790209584
+  }
+}
+```
+
+</p>
+</details>
+
 
 Follow this [link](https://narkasa.com/register?ref=20202738) to register.
