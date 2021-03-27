@@ -163,6 +163,7 @@ ask: 1673.59
 ### Get All Markets 24h
 `Narkasa.getAllMarkets().then(res=>console.log({res}));`
 <details><summary>expected result</summary>
+<p>
 ```Javascript
 //expected
 {
@@ -455,6 +456,7 @@ ask: 1673.59
   ]
 }
 ```
+</p>
 </details>
 
 Follow this [link](https://narkasa.com/register?ref=20202738) to register.
