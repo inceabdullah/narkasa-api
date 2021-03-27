@@ -164,6 +164,7 @@ ask: 1673.59
 `Narkasa.getAllMarkets().then(res=>console.log({res}));`
 <details><summary>expected result</summary>
 <p>
+
 ```Javascript
 //expected
 {
@@ -456,6 +457,7 @@ ask: 1673.59
   ]
 }
 ```
+
 </p>
 </details>
 
