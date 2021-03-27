@@ -26,6 +26,11 @@ describe("Narkasa", ()=>{
             expect(await Narkasa.getBalance()).to.be.an("array");
         });
     });
+    describe("gel all markets", ()=>{
+        it("Gets array includes objects", async ()=>{
+            (await services.tradeService.getAllMarkets()).forEach(item=>expect(item).to.be.an("object"));
+        });
+    });
     describe("start websocket client", ()=>{
         it("if connected, resolved true", async ()=>{
             expect(await services.wsService.startWS()).to.be.true;
@@ -69,9 +74,11 @@ describe("Narkasa", ()=>{
             expect(resp).to.be.an("object");
         });
     });
-    describe("gel all markets", ()=>{
-        it("Gets array includes objects", async ()=>{
-            (await services.tradeService.getAllMarkets()).forEach(item=>expect(item).to.be.an("object"));
+    describe("making sell limit", ()=>{
+        it("making sell limit. Gets order object", async ()=>{
+            const resp = await services.tradeService.limitSellOrder("ETHUSDT", 2000, 0.01)
+            expect(resp).to.be.an("object");
         });
     });
+
 });

@@ -1,7 +1,6 @@
 const axios = require("axios");
 const conf = require("../../config.json");
 const { utils } = require("../helpers");
-const { env } = require("../loaders/");
 
 const { rest } = conf;
 
@@ -56,6 +55,15 @@ exports.getBalance = (asset) => new Promise(async (resolve, reject)=>{// asset o
     resolve(response.data.wallet);
 });
 
+exports.getAllMarkets = () =>
+    new Promise((resolve, reject)=>
+        axios.get(rest+ "/market/markets")
+            .then(res=>{
+                if (res.data.code !== "00000" || !res.data.markets) return reject(res.data);
+                resolve(res.data.markets);
+            })
+            .catch(reject));
+
 exports.limitBuyOrder = (symbol, price, amount) =>
     new Promise(async (resolve, reject) => {
         const { apiKey, apiSecret } = credential;
@@ -76,12 +84,24 @@ exports.limitBuyOrder = (symbol, price, amount) =>
         resolve(response.data.order);
     });
 
+exports.limitSellOrder = (symbol, price, amount) =>
+new Promise(async (resolve, reject) => {
+    const { apiKey, apiSecret } = credential;
+    let data;
+    data = { symbol, price, amount};
+    data = getSignatured(apiKey, apiSecret, data);
+    const response = await axios.post(rest + "/market/limit-sell", data, {
+        headers: {
+            "x-apnk-apikey": apiKey
+        }
+    })
+    .catch(err=>{
+        utils.logger("Error in the module limitSellOrder", err);
+        reject(err);
+    });
+    if (!response) return;
+    if (response.data.code !== "00000") return reject(response.data);
+    resolve(response.data.order);
+});
 
-exports.getAllMarkets = () =>
-    new Promise((resolve, reject)=>
-        axios.get(rest+ "/market/markets")
-            .then(res=>{
-                if (res.data.code !== "00000" || !res.data.markets) return reject(res.data);
-                resolve(res.data.markets);
-            })
-            .catch(reject));
+

@@ -1,5 +1,5 @@
 const {
-    tradeService: {getSignature, getBalance, limitBuyOrder, getAllMarkets, credential: tradeCredential},
+    tradeService: {getSignature, getBalance, getAllMarkets, limitBuyOrder, limitSellOrder, credential: tradeCredential},
     wsService: {
         startWS, userDataStream, pushOnMessage,
         orderBook, pushOnMessageOrderBook,
@@ -21,6 +21,10 @@ module.exports = {
     },
     getBalance: async function(asset){
         return getBalance();
+    },
+
+    getAllMarkets: async function(){
+        return getAllMarkets();
     },
 
     startWS: async function(){
@@ -47,8 +51,8 @@ module.exports = {
         return limitBuyOrder(symbol, price, amount);
     },
 
-    getAllMarkets: async function(){
-        return getAllMarkets();
+    limitSellOrder: async function(symbol, price, amount){
+        return limitSellOrder(symbol, price, amount);
     }
 
 }
