@@ -24,7 +24,7 @@ Narkasa.setCredential(apiKey, apiSecret);
     - User Data Streams
         - [Start User Data Streams](#start-user-data-streams)
     - Websocket Data Streams
-        - [Start Order Book (Websocket)](#start-order-book)
+        - [Start Order Book](#start-order-book)
 - Markets
     - Market
         - [Get All Markets 24h](#get-all-markets-24h)
