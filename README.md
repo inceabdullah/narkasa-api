@@ -32,6 +32,8 @@ Narkasa.setCredential(apiKey, apiSecret);
         - [New Limit Buy Order](#buy-limit-order)
         - [New Limit Sell Order](#sell-limit-order)
         - [Cancel Limit Order](#cancel-limit-order)
+        - [Market Buy](#market-buy)
+        - [Market Sell](#market-sell)
 
 
 ### Get Balance
