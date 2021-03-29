@@ -1,7 +1,7 @@
 const {
     tradeService: {
         getSignature, getBalance, getAllMarkets, limitBuyOrder,
-        limitSellOrder, cancelOrder,
+        limitSellOrder, cancelOrder, marketBuy, marketSell,
         credential: tradeCredential
     },
     wsService: {
@@ -61,6 +61,14 @@ module.exports = {
 
     cancelOrder: function(orderId){
         return cancelOrder(orderId);
+    },
+
+    marketBuy: function(symbol, amount){
+        return marketBuy(symbol, amount);
+    },
+
+    marketSell: function(symbol, amount){
+        return marketSell(symbol, amount);
     }
 
 }

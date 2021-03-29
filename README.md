@@ -557,5 +557,81 @@ Narkasa.cancelOrder("****fe3bb963dd1becc0f5d76adc49966e67c4c0fa1d1832a8ae49ae07e
 </p>
 </details>
 
+### Market Buy
+```Javascript
+Narkasa.marketBuy("ETHUSDT", 1).then(res=>console.log({res})).catch(err=>console.error({err}));
+```
+<details><summary>expected result</summary>
+<p>
+
+```Javascript
+{
+  res: {
+        "status": "FILLED",
+        "market":"ETHUSDT",
+        "orderType": "MARKET",
+        "side": "BUY",
+        "amount": 1,
+        "filledAmount": 1,
+        "time": 1617021170844
+    }
+}
+```
+
+</p>
+</details>
+
+<details><summary>expected Insufficient balance result</summary>
+<p>
+
+```Javascript
+{
+  err: {
+  "code": "10031"
+}
+}
+```
+
+</p>
+</details>
+
+### Market Sell
+```Javascript
+Narkasa.marketSell("ETHUSDT", 1).then(res=>console.log({res})).catch(err=>console.error({err}));
+```
+<details><summary>expected result</summary>
+<p>
+
+```Javascript
+{
+  res: {
+        "status": "FILLED",
+        "market":"ETHUSDT",
+        "orderType": "MARKET",
+        "side": "SELL",
+        "amount": 1,
+        "filledAmount": 1,
+        "time": 1617021170844
+    }
+}
+```
+
+</p>
+</details>
+
+<details><summary>expected Insufficient balance result</summary>
+<p>
+
+```Javascript
+{
+  err: {
+  "code": "10031"
+}
+}
+```
+
+</p>
+</details>
+
 
 Follow this [link](https://narkasa.com/register?ref=20202738) to register.

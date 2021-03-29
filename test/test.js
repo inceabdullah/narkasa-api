@@ -68,28 +68,50 @@ describe("Narkasa", ()=>{
             })).to.be.a("number");
         });
     });
-    describe("making buy limit then cancel", ()=>{
-        it("making buy limit. Gets order object", async ()=>{
-            const resp = await Narkasa.limitBuyOrder("ETHUSDT", 1500.1, 0.01)
-            if(expect(resp).to.be.an("object")){
-                    const { orderId } = resp;
-                    if (!orderId) throw "orderId was not got!";
-                    const _resp = await Narkasa.cancelOrder(orderId);
-                    expect(_resp).to.be.an("object");
-                return true;
-            }
+    describe("Market", ()=>{
+        describe("making buy limit then cancel", ()=>{
+            it("making buy limit. Gets order object", async ()=>{
+                const resp = await Narkasa.limitBuyOrder("ETHUSDT", 1500.1, 0.01)
+                if(expect(resp).to.be.an("object")){
+                        const { orderId } = resp;
+                        if (!orderId) throw "orderId was not got!";
+                        const _resp = await Narkasa.cancelOrder(orderId);
+                        expect(_resp).to.be.an("object");
+                    return true;
+                }
+            });
         });
-    });
-    describe("making sell limit then cancel", ()=>{
-        it("making sell limit. Gets order object", async ()=>{
-            const resp = await Narkasa.limitSellOrder("ETHUSDT", 2000, 0.01)
-            if(expect(resp).to.be.an("object")){
-                    const { orderId } = resp;
-                    if (!orderId) throw "orderId was not got!";
-                    const _resp = await Narkasa.cancelOrder(orderId);
-                    expect(_resp).to.be.an("object");
-                return true;
-            }
+        describe("making sell limit then cancel", ()=>{
+            it("making sell limit. Gets order object", async ()=>{
+                const resp = await Narkasa.limitSellOrder("ETHUSDT", 2000, 0.01)
+                if(expect(resp).to.be.an("object")){
+                        const { orderId } = resp;
+                        if (!orderId) throw "orderId was not got!";
+                        const _resp = await Narkasa.cancelOrder(orderId);
+                        expect(_resp).to.be.an("object");
+                    return true;
+                }
+            });
+        });
+        describe("Market Buy", ()=>{
+            it("market buy 10031 	Insufficient balance", async ()=>{
+                const resp = await Narkasa.marketBuy("ETHUSDT", 1).catch(err=>{
+                    expect(err.code).to.equal("10031");
+                });
+                if (resp){
+                    throw "not catched in marketBuy " + JSON.stringify(resp);
+                }
+            })
+        });
+        describe("Market Sell", ()=>{
+            it("market buy 10031 	Insufficient balance", async ()=>{
+                const resp = await Narkasa.marketSell("ETHUSDT", 1).catch(err=>{
+                    expect(err.code).to.equal("10031");
+                });
+                if (resp){
+                    throw "not catched in marketSell " + JSON.stringify(resp);
+                }
+            })
         });
     });
 

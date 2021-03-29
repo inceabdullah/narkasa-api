@@ -123,3 +123,43 @@ exports.cancelOrder = (orderId) =>
         if (response.data.code !== "00000") return reject(response.data);
         resolve(response.data.order);
     });
+
+exports.marketBuy = (symbol, amount) =>
+    new Promise(async (resolve, reject)=>{
+        const { apiKey, apiSecret } = credential;
+        let data;
+        data = { symbol, amount };
+        data = getSignatured(apiKey, apiSecret, data);
+        const response = await axios.post(rest + "/market/market-buy", data, {
+            headers: {
+                "x-apnk-apikey": apiKey
+            }
+        })
+        .catch(err=>{
+            utils.logger("Error in the module marketBuy", err);
+            reject(err);
+        });
+        if (!response) return;
+        if (response.data.code !== "00000") return reject(response.data);
+        resolve(response.data.order);
+    })
+
+exports.marketSell = (symbol, amount) =>
+    new Promise(async (resolve, reject)=>{
+        const { apiKey, apiSecret } = credential;
+        let data;
+        data = { symbol, amount };
+        data = getSignatured(apiKey, apiSecret, data);
+        const response = await axios.post(rest + "/market/market-sell", data, {
+            headers: {
+                "x-apnk-apikey": apiKey
+            }
+        })
+        .catch(err=>{
+            utils.logger("Error in the module marketSell", err);
+            reject(err);
+        });
+        if (!response) return;
+        if (response.data.code !== "00000") return reject(response.data);
+        resolve(response.data.order);
+    })
