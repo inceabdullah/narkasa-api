@@ -507,7 +507,7 @@ Narkasa.limitBuyOrder("ETHUSDT", 1500, 0.01).then(res=>console.log({res}));
 
 ### Sell Limit Order
 ```Javascript
-Narkasa.sellBuyOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));
+Narkasa.limitSellOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));
 ```
 <details><summary>expected result</summary>
 <p>
