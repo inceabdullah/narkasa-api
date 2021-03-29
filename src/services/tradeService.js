@@ -104,4 +104,22 @@ new Promise(async (resolve, reject) => {
     resolve(response.data.order);
 });
 
-
+exports.cancelOrder = (orderId) =>
+    new Promise(async (resolve, reject)=>{
+        const { apiKey, apiSecret } = credential;
+        let data;
+        data = { orderId };
+        data = getSignatured(apiKey, apiSecret, data);
+        const response = await axios.post(rest + "/market/cancel-order", data, {
+            headers: {
+                "x-apnk-apikey": apiKey
+            }
+        })
+        .catch(err=>{
+            utils.logger("Error in the module cancelOrder", err);
+            reject(err);
+        });
+        if (!response) return;
+        if (response.data.code !== "00000") return reject(response.data);
+        resolve(response.data.order);
+    });
