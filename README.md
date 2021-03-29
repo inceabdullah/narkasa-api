@@ -31,6 +31,7 @@ Narkasa.setCredential(apiKey, apiSecret);
     - Signed Market
         - [New Limit Buy Order](#buy-limit-order)
         - [New Limit Sell Order](#sell-limit-order)
+        - [Cancel Limit Order](#cancel-limit-order)
 
 
 ### Get Balance
@@ -523,6 +524,31 @@ Narkasa.sellBuyOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));
     amount: 0.01,
     filledAmount: 0,
     time: 1616790209584
+  }
+}
+```
+
+</p>
+</details>
+
+### Cancel Limit Order
+```Javascript
+Narkasa.cancelOrder("****fe3bb963dd1becc0f5d76adc49966e67c4c0fa1d1832a8ae49ae07eb93cce3e0****").then(res=>console.log({res}));
+<details><summary>expected result</summary>
+<p>
+
+```Javascript
+{
+  res: {
+    market: 'ETHUSDT',
+    price: 2000,
+    targetPrice: 0,
+    amount: 0.01,
+    filledAmount: 0,
+    side: 1,
+    time: 1617021170844,
+    orderType: 0,
+    orderId: '****fe3bb963dd1becc0f5d76adc49966e67c4c0fa1d1832a8ae49ae07eb93cce3e0****'
   }
 }
 ```
