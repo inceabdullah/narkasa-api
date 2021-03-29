@@ -534,6 +534,7 @@ Narkasa.sellBuyOrder("ETHUSDT", 2000, 0.01).then(res=>console.log({res}));
 ### Cancel Limit Order
 ```Javascript
 Narkasa.cancelOrder("****fe3bb963dd1becc0f5d76adc49966e67c4c0fa1d1832a8ae49ae07eb93cce3e0****").then(res=>console.log({res}));
+```
 <details><summary>expected result</summary>
 <p>
 
